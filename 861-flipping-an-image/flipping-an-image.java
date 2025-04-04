@@ -3,7 +3,6 @@ class Solution {
          for (int i = 0; i < arr.length; i++) {
             swap(arr[i]);
         }
-
         for (int[] x : arr) {
             for(int i=0;i<x.length;i++){
                 if(x[i]==0){
@@ -13,7 +12,6 @@ class Solution {
                 }
             }
         }
-
         return arr;
     }
     static void swap(int[] arr) {
