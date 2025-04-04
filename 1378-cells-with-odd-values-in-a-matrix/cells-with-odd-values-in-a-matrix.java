@@ -4,8 +4,8 @@ class Solution {
         int[] col = new int[n];
 
         for (int[] x : indices) {
-            row[x[0]]++;
-            col[x[1]]++;
+            row[x[0]] ^= 1;
+            col[x[1]] ^=1;
         }
 
         System.out.println(Arrays.toString(row));
