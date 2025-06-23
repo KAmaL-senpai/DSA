@@ -6,10 +6,10 @@ class Solution {
         while (i >= 0 || k > 0) {
             if (i >= 0) {
                 k += num[i];
+                i--;
             }
             result.addFirst(k % 10);
             k /= 10;
-                i--;
         }
 
         return result;
