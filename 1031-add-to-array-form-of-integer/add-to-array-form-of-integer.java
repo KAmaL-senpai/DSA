@@ -1,15 +1,17 @@
 class Solution {
     public List<Integer> addToArrayForm(int[] num, int k) {
-        List<Integer> ans = new ArrayList<>();
-        int n = num.length - 1;
-        while (n >= 0 || k > 0) {
-            if (n >= 0) {
-                k += num[n];
+         LinkedList<Integer> result = new LinkedList<>();
+        int i = num.length - 1;
+
+        while (i >= 0 || k > 0) {
+            if (i >= 0) {
+                k += num[i];
+                i--;
             }
-            ans.add(0, k % 10);
+            result.addFirst(k % 10);
             k /= 10;
-            n--;
         }
-        return ans;
+
+        return result;
     }
 }
