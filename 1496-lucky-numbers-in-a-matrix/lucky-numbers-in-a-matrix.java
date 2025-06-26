@@ -6,27 +6,29 @@ class Solution {
 
         for (int i = 0; i < row; i++) {
             int minColIndex = 0;
+            int minVal = matrix[i][0];
 
             // Finding min in row
             for (int j = 1; j < col; j++) {
-                if (matrix[i][j] < matrix[i][minColIndex]) {
+                if (matrix[i][j] < minVal) {
+                    minVal = matrix[i][j];
                     minColIndex = j;
                 }
             }
 
-            int candidate = matrix[i][minColIndex];
+         
             boolean isMaxinCol = true;
 
             // Finding min in col
             for (int k = 0; k < row; k++) {
-                if (matrix[k][minColIndex] > candidate) {
+                if (matrix[k][minColIndex] > minVal) {
                     isMaxinCol = false;
                     break;
                 }
             }
 
             if (isMaxinCol) {
-                list.add(candidate);
+                list.add(minVal);
             }
         }
 
