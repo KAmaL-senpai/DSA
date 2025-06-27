@@ -1,14 +1,14 @@
 class Solution {
     public int maxSubArray(int[] nums) {
-         // Solved using Kadane's Algorithm
-        int currSum = nums[0];
-        int maxSum = nums[0];
-
-        for (int i = 1; i < nums.length; i++) {
-            currSum = Math.max(nums[i], nums[i] + currSum);
-            maxSum = Math.max(currSum, maxSum);
+       int maxSum = nums[0];
+        int total = 0;
+        for (int n : nums) {
+            if (total < 0) {
+                total = 0;
+            }
+            total += n;
+            maxSum = total > maxSum ? total : maxSum;
         }
-
         return maxSum;
 
     }
