@@ -1,42 +1,42 @@
 class Solution {
     public int[][] generateMatrix(int n) {
-           int total = n * n;
-
         int[][] ans = new int[n][n];
 
-        int top = 0;
-        int left = 0;
-        int right = ans[0].length-1;
-        int bottom = ans.length - 1;
+        int srow = 0, scol = 0, erow = ans.length - 1, ecol = ans[0].length - 1;
+        int count = 1;
 
-        int m = 1; 
-        
-        while (top <= bottom && left <= right && m <= total) {
-            for (int i = left; i <= right; i++) {
-                ans[top][i] = m;
-                m++;
+        while (srow <= erow && scol <= ecol) {
+            for (int i = scol; i <= ecol; i++) {
+                ans[srow][i] = count;
+                count++;
             }
-            top++;
-            for (int i = top; i <= bottom; i++) {
-                ans[i][right] = m;
-                m++;
+            srow++;
+            for (int i = srow; i <= erow; i++) {
+                ans[i][ecol] = count;
+                count++;
             }
-            right--;
-            if (top <= bottom) {
-                for (int i = right; i >= left; i--) {
-                    ans[bottom][i] = m;
-                    m++;
+            ecol--;
+            if (srow <= erow) {
+
+                for (int i = ecol; i >= scol; i--) {
+                    ans[erow][i] = count;
+                    count++;
                 }
-                bottom--;
+                erow--;
             }
-            if (left <= right) {
-                for (int i = bottom; i >= top; i--) {
-                    ans[i][left] = m;
-                    m++;
+            if (scol <= ecol) {
+
+                for (int i = erow; i >= srow; i--) {
+                    if (scol == ecol) {
+                        break;
+                    }
+                    ans[i][scol] = count;
+                    count++;
                 }
-                left++;
+                scol++;
             }
         }
         return ans;
+
     }
 }
