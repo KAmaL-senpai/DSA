@@ -45,6 +45,5 @@ class Solution {
             }
         }
 
-        System.out.println(Arrays.deepToString(matrix));
     }
 }
