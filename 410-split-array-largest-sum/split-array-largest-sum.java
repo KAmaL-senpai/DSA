@@ -1,32 +1,37 @@
 class Solution {
     public int splitArray(int[] nums, int k) {
-          int start = 0;
+         int start = 0;
         int end = 0;
-        for (int i = 0; i < nums.length; i++) {
-            start = Math.max(start, nums[i]);
-            end += nums[i];
+
+        // Initialize the binary search bounds
+        for (int num : nums) {
+            start = Math.max(start, num); // at least the largest number
+            end += num;                   // at most the total sum
         }
 
+        // Binary search to minimize the largest subarray sum
         while (start < end) {
             int mid = start + (end - start) / 2;
 
             int sum = 0;
-            int peices = 1;
-            for (int i : nums) {
-                if (sum + i > mid) {
-                    sum = i;
-                    peices++;
+            int pieces = 1;
+            for (int num : nums) {
+                if (sum + num > mid) {
+                    // Need a new subarray
+                    sum = num;
+                    pieces++;
                 } else {
-                    sum += i;
+                    sum += num;
                 }
             }
 
-            if (peices > k) {
-                start = mid + 1;
+            if (pieces > k) {
+                start = mid + 1; // Too many pieces, increase allowed max sum
             } else {
-                end = mid;
+                end = mid; // Valid split, try a smaller max sum
             }
         }
-        return end;
+
+        return start;
     }
 }
