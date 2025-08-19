@@ -10,6 +10,6 @@ class Solution {
                 end=mid;
             }
         }
-        return nums[start];
+        return nums[end];
     }
 }
