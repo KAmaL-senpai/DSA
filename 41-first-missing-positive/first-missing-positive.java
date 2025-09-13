@@ -1,21 +1,23 @@
 class Solution {
-    public int firstMissingPositive(int[] arr) {
-         for (int i = 0; i < arr.length;) {
-            int correct = arr[i]-1;   //Ignore the N
-            if (arr[i] > 0 && arr[i] <= arr.length && arr[i] != arr[correct]) {
-                int temp = arr[i];
-                arr[i] = arr[correct];
-                arr[correct] = temp;
+    public int firstMissingPositive(int[] nums) {
+        
+        for (int i = 0; i < nums.length;) {
+            int correctInd = nums[i] - 1;
+            if (nums[i] > 0 && nums[i] <= nums.length && nums[i] != nums[correctInd]) {
+                int temp = nums[i];
+                nums[i] = nums[correctInd];
+                nums[correctInd] = temp;
             } else {
                 i++;
             }
         }
-
-        for(int i=0;i<arr.length;i++){
-            if(arr[i] != i+1){
-                return i+1;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != i + 1) {
+                return i + 1;
             }
         }
-        return arr.length+1;
+
+        return nums.length+1;
+
     }
 }
