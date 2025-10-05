@@ -32,7 +32,7 @@ class Solution {
         StringBuilder freqString = new StringBuilder("");
         char c = 'a';
         for (int i : freq) {
-            freqString.append(c);
+             freqString.append('#');
             freqString.append(i);
             c++;
         }
