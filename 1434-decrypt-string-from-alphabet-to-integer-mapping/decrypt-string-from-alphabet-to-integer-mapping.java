@@ -1,6 +1,6 @@
 class Solution {
     public String freqAlphabets(String s) {
-         StringBuilder ans = new StringBuilder();
+         StringBuilder ans = new StringBuilder(s.length());
 
         for (int i = 0; i < s.length();) {
             if (i + 2 < s.length() && s.charAt(i + 2) == '#') {
