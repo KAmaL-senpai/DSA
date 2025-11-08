@@ -38,6 +38,6 @@ class Solution {
             }
         }
 
-        return new String(ans);
+        return ans.length() == 0 ? "0" : ans.toString();
     }
 }
