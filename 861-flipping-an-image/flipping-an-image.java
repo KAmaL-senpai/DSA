@@ -1,25 +1,14 @@
 class Solution {
     public int[][] flipAndInvertImage(int[][] arr) {
-         for (int i = 0; i < arr.length; i++) {
-            swap(arr[i]);
-        }
-        for (int[] x : arr) {
-            for(int i=0;i<x.length;i++){
-                if(x[i]==0){
-                    x[i]=1;
-                }else{
-                    x[i]=0;
-                }
+        for (int[] row : arr) {
+            int n = row.length;
+            for (int i = 0; i < (n + 1) / 2; i++) {
+                // swap and invert in one step
+                int temp = row[i] ^ 1; // invert
+                row[i] = row[n - i - 1] ^ 1; // invert
+                row[n - i - 1] = temp;
             }
         }
         return arr;
-    }
-    static void swap(int[] arr) {
-        int mid = arr.length / 2;
-        for (int i = 0; i < mid; i++) {
-            int temp = arr[i];
-            arr[i] = arr[arr.length - i - 1];
-            arr[arr.length - i - 1] = temp;
-        }
     }
 }
